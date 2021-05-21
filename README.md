@@ -71,3 +71,5 @@ Finally Enzyme provides us access to `props` and `state`
 1. Set initial state
 2. Simulate button click
 3. Check displayed count to see that it was incremented by one
+
+## Click Counter Test Feature
