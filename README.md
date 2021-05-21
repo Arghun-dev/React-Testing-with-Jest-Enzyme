@@ -26,3 +26,20 @@ Finally Enzyme provides us access to `props` and `state`
 1. install it (because enzyme does not come with create-react-app)
 
 `$. npm i -D enzyme jest-enzyme enzyme-adapter-react-17`
+
+
+## Types of tests
+
+1. Unit tests
+
+  `Test one piece of code (usually one function)`
+  
+2. Integration test
+
+  `How multiple units work together`
+  
+3. Acceptance / End-to-end (E2E) Tests
+
+  `How a user would interact with app`
+  
+**Jest and Enzyme really focus on `integration` and `unit` tests for react and redux**
