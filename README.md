@@ -43,3 +43,31 @@ Finally Enzyme provides us access to `props` and `state`
   `How a user would interact with app`
   
 **Jest and Enzyme really focus on `integration` and `unit` tests for react and redux**
+
+
+## Testing goals
+
+1. Easy maintenance of tests 
+
+.We want to test `behavior` and `not implementation` => this means **Ideally, do not want to re-write tests after a re-factor**
+
+. Keep in mind when writing tests
+
+. Test behavior (what the app should do)
+
+. instead of implementation (how it works)
+
+. Then, if implementation changes, tests remain the same
+
+
+## Feature to Test (example)
+
+1. App keeps counter of button click count
+2. onClick function for button calls `incrementCounter` function
+3. Counter display increments by one
+
+**Testin behavior**
+
+1. Set initial state
+2. Simulate button click
+3. Check displayed count to see that it was incremented by one
