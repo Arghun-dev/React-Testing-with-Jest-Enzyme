@@ -73,3 +73,35 @@ Finally Enzyme provides us access to `props` and `state`
 3. Check displayed count to see that it was incremented by one
 
 ## Click Counter Test Feature
+
+**You can access component methods from the component instance**
+
+```js
+// MyComponent.js
+import React, { Component } from 'react';
+
+class MyComponent extends Component {
+  constructor() {
+    super();
+    this._method = this._method.bind(this);
+  }
+  _method() {
+    return true;
+  }
+  render() {
+    return null;
+  }
+}
+
+export default MyComponent;
+```
+
+```js
+// __spec__/MyComponent.spec.js
+import React from 'react';
+import { shallow } from 'enzyme';
+import MyComponent from './MyComponent';
+
+const wrapper = shallow(<MyComponent />);
+console.log(wrapper.instance()._method()); // true
+```
