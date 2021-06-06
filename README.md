@@ -105,3 +105,9 @@ import MyComponent from './MyComponent';
 const wrapper = shallow(<MyComponent />);
 console.log(wrapper.instance()._method()); // true
 ```
+
+## Remove data-test attributes from production
+
+first you need to install a package called:
+
+`$. npm install --save-dev babel-plugin-react-remove-properties`
