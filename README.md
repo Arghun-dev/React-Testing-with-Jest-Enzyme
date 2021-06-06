@@ -111,3 +111,11 @@ console.log(wrapper.instance()._method()); // true
 first you need to install a package called:
 
 `$. npm install --save-dev babel-plugin-react-remove-properties`
+
+the second thing you need to do:
+
+`$. npm run eject`
+
+this is only if you're working with `create-react-app`.
+
+what `npm run eject` does, it takes configuration file and makes them editable by us
