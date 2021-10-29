@@ -4,46 +4,47 @@ import Counter from './Counter';
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
-const setup = (props = {}, state = null) => {
-  const wrapper = shallow(<Counter {...props} />);
-  if (state) wrapper.setState(state);
+/**
+ * Factory function to create a shallowWrapper for the Counter component
+ * @param {object} props - component props
+ * @param {any} state - Initial state for setup
+ * @returns {ShallowWrapper}
+ */
 
-  return wrapper;
-};
+function setup(props = {}, state = null) {
+  return shallow(<Counter {...props} />);
+}
 
-test('renders without error', () => {
-  const wrapper = setup();
-  const appComponent = wrapper.find("[data-test='component-counter']");
-  expect(appComponent.length).toBe(1);
-});
+/**
+ * Returns ShallowWrapper find of the specific element using data-test value
+ * @param {string} val - getting data-test argument as val property
+ * @returns {ShallowWrapper}
+ */
 
-test('renders counter display', () => {
-  const wrapper = setup();
-  const counterDisplay = wrapper.find("[data-test='counter-display']");
-  expect(counterDisplay.length).toBe(1);
+function findByTestAttr(val) {
+  return wrapper.find(`[data-test="${val}"]`);
+}
+
+const wrapper = setup();
+
+test('renders counter component', () => {
+  const counterComponent = findByTestAttr('component-counter');
+  expect(counterComponent.length).toBe(1);
 });
 
 test('renders increment button', () => {
-  const wrapper = setup();
-  const incrementButton = wrapper.find("[data-test='increment-button']");
+  const incrementButton = findByTestAttr('increment-button');
   expect(incrementButton.length).toBe(1);
 });
 
-test('counter starts at 0', () => {
-  const wrapper = setup();
-  const initialCounterState = wrapper.state('counter');
-  expect(initialCounterState).toBe(0);
+test('renders decrement button', () => {
+  const decrementButton = findByTestAttr('decrement-button');
+  expect(decrementButton.length).toBe(1);
 });
 
-test('clicking increment button increment counter correctly', () => {
-  const counter = 0;
-  const wrapper = setup(null, { counter });
-
-  // find button and click
-  const incrementButton = wrapper.find("[data-test='increment-button']");
-  incrementButton.simulate('click');
-
-  // find display and test value
-  const counterDisplay = wrapper.find("[data-test='counter-display']");
-  expect(counterDisplay.text()).toContain(counter + 1);
+test('renders counter display', () => {
+  const displayCounter = findByTestAttr('counter-display');
+  expect(displayCounter.length).toBe(1);
 });
+
+test('counter starts at 0', () => {});
